@@ -14,7 +14,7 @@ export function createCodexStream(connect: () => Promise<CodexClient>): StreamFu
 			timestamp: Date.now(), stopReason: "pending", usage: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0, totalTokens: 0,
 				cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0, total: 0 } } };
 		let client: CodexClient | undefined, finished = false;
-		
+
 		// Buffer prose until the operation settles: a protocol delimiter or answer
 		// payload can span deltas. Filtering each delta would expose its prefix.
 		const pendingText = new Map<string, string>();
